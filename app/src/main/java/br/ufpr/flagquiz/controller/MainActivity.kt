@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.flagging.Flags
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.ufpr.flagquiz.R
@@ -28,8 +29,9 @@ class MainActivity : AppCompatActivity() {
 
     fun start(view: View){
 
-        val name: String = findViewById<EditText>(R.id.editName).text.toString()
+        val numeroDeRodadas: Int = 5
 
+        val name: String = findViewById<EditText>(R.id.editName).text.toString()
         var allFlagsList: List<Flag> = listOf(
             Flag("angola", R.drawable.ao),
             Flag("argentina", R.drawable.ar),
@@ -48,15 +50,28 @@ class MainActivity : AppCompatActivity() {
             Flag("dinamarca", R.drawable.dk)
         )
 
-        var flagList = allFlagsList.shuffled().take(5)
+        val flagList = allFlagsList.shuffled().take(numeroDeRodadas)
+
+        var answers: MutableList<Flag>
 
         val intent = Intent(this, PlayActivity::class.java)
 
         intent.putExtra("name", name)
 
-        intent.putExtra("flags", ArrayList(flagList))
+        for (i in 1..numeroDeRodadas) {
+            intent.putExtra("flag", flagList[i - 1])
 
-        startActivity(intent)
+            // Começa a activity esperando por um retorno (não sei se é com esse método)
+            startActivity(intent)
+            // Obtém resposta selecionada na rodada
+            // Acrescenta resposta am answers
+        }
+
+        // Calcula pontuação
+        // Inicia a activity com o placar
+
+        // Limpa o texto do campo do nome, se for necessário e possível
+
 
     }
 }
