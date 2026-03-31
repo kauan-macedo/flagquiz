@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             Flag("Canada", R.drawable.ca),
             Flag("China", R.drawable.cn),
             Flag("Finlandia", R.drawable.fi),
-            Flag("França", R.drawable.fr),
+            Flag("India", R.drawable.ind),
             Flag("Polonia", R.drawable.pl),
             Flag("Portugal", R.drawable.pt),
             Flag("Paraguai", R.drawable.py),
